@@ -33,11 +33,11 @@ export const Login = ({ authenticated, setAuthenticated }) => {
     api
       .post("/sessions", data)
       .then((resp) => {
-        const { token } = resp.data;
+        const { token, user } = resp.data;
 
         localStorage.setItem("@KenzieHub:token", JSON.stringify(token));
+        localStorage.setItem("@KenzieHub:user", JSON.stringify(user));
         setAuthenticated(true);
-
         reset();
         return history.push("/dashboard");
       })

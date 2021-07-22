@@ -8,17 +8,23 @@ import { Input } from "../../components/Input";
 import { api } from "../../services/api";
 
 import { ContainerDashboard } from "./styles";
+import { ModalUpdate } from "../../components/ModalUpdate";
 
 export const Dashboard = ({ authenticated }) => {
   const [techs, setTechs] = useState([]);
+  const [updateTech, setUpdateTech] = useState([]);
+  const [show, setShow] = useState(false);
   const [token] = useState(
     JSON.parse(localStorage.getItem("@KenzieHub:token")) || ""
   );
+
   const { register, handleSubmit, reset } = useForm();
 
   const loadTechs = () => {
+    const user = JSON.parse(localStorage.getItem("@KenzieHub:user"));
+
     api
-      .get("/profile", {
+      .get(`/users/${user.id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -26,7 +32,8 @@ export const Dashboard = ({ authenticated }) => {
       .then((resp) => {
         const apiTechs = resp.data.techs;
         setTechs(apiTechs);
-      });
+      })
+      .catch((err) => console.log(err));
   };
   console.log(techs);
 
@@ -54,12 +61,39 @@ export const Dashboard = ({ authenticated }) => {
     reset();
   };
 
+  const handleDelete = (id) => {
+    const newTechs = techs.filter((tech) => tech.id !== id);
+
+    api
+      .delete(`users/techs/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((resp) => setTechs(newTechs));
+  };
+
+  const handleUpdate = (id) => {
+    const findTech = techs.find((tech) => tech.id === id);
+    setUpdateTech(findTech);
+    setShow(true);
+  };
+
   if (!authenticated) {
     return <Redirect to="/login" />;
   }
 
   return (
     <ContainerDashboard>
+      <ModalUpdate
+        show={show}
+        setShow={setShow}
+        techs={techs}
+        setTechs={setTechs}
+        updateTech={updateTech}
+        token={token}
+      />
+
       <section>
         <h2>Adicionar Tecnologia</h2>
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -72,7 +106,13 @@ export const Dashboard = ({ authenticated }) => {
       <section>
         <h2>Tecnologias</h2>
         {techs.map((tech) => (
-          <Tech key={tech.id} title={tech.title} status={tech.status} />
+          <Tech
+            key={tech.id}
+            title={tech.title}
+            status={tech.status}
+            onClickDel={() => handleDelete(tech.id)}
+            onClickUp={() => handleUpdate(tech.id)}
+          />
         ))}
       </section>
     </ContainerDashboard>
