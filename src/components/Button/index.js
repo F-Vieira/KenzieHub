@@ -1,5 +1,9 @@
-import {} from "./styles";
+import { ContainerBtn } from "./styles";
 
-export const Button = () => {
-  return <></>;
+export const Button = ({ children, whiteSchema = false, ...rest }) => {
+  return (
+    <ContainerBtn whiteSchema={whiteSchema} {...rest}>
+      {children}
+    </ContainerBtn>
+  );
 };
