@@ -1,4 +1,4 @@
-import { Link, useHistory } from "react-router-dom";
+import { Link, Redirect, useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -10,7 +10,7 @@ import { api } from "../../services/api";
 
 import { ContainerSignup } from "./styles";
 
-export const Signup = () => {
+export const Signup = ({ authenticated }) => {
   const schema = yup.object().shape({
     name: yup.string().required("Campo Obrigatório"),
     contact: yup.string().required("Campo Obrigatório"),
@@ -49,6 +49,10 @@ export const Signup = () => {
         )
       );
   };
+
+  if (authenticated) {
+    return <Redirect to="dashboard" />;
+  }
 
   return (
     <ContainerSignup>

@@ -1,4 +1,4 @@
-import { Link, useHistory } from "react-router-dom";
+import { Link, Redirect, useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -9,7 +9,7 @@ import { Input } from "../../components/Input";
 import { api } from "../../services/api";
 
 import { ContainerLogin } from "./styles";
-export const Login = () => {
+export const Login = ({ authenticated, setAuthenticated }) => {
   const schema = yup.object().shape({
     email: yup.string().email("E-mail Inválido").required("Campo Obrigatório"),
     password: yup
@@ -36,12 +36,18 @@ export const Login = () => {
         const { token } = resp.data;
 
         localStorage.setItem("@KenzieHub:token", JSON.stringify(token));
+        setAuthenticated(true);
 
         reset();
         return history.push("/dashboard");
       })
       .catch((err) => toast.error("E-mail ou senha incorreta!"));
   };
+
+  if (authenticated) {
+    return <Redirect to="/dashboard" />;
+  }
+
   return (
     <ContainerLogin>
       <h2>Login</h2>

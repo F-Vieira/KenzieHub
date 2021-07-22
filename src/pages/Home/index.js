@@ -1,13 +1,17 @@
 import { ContainerHome } from "./styles";
 import { Button } from "../../components/Button";
-import { useHistory } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
 
-export const Home = () => {
+export const Home = ({ authenticated }) => {
   const history = useHistory();
 
   const handleNavigation = (path) => {
     return history.push(path);
   };
+
+  if (authenticated) {
+    return <Redirect to="dashboard" />;
+  }
 
   return (
     <ContainerHome>
