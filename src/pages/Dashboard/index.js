@@ -1,30 +1,34 @@
 import { useForm } from "react-hook-form";
 import { Redirect } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 
 import { Tech } from "../../components/Tech";
 import { Button } from "../../components/Button";
 import { Input } from "../../components/Input";
 import { api } from "../../services/api";
-
-import { ContainerDashboard } from "./styles";
 import { ModalUpdate } from "../../components/ModalUpdate";
 
-export const Dashboard = ({ authenticated }) => {
+import { ContainerDashboard } from "./styles";
+
+export const Dashboard = ({ authenticated, setAuthenticated }) => {
   const [techs, setTechs] = useState([]);
   const [updateTech, setUpdateTech] = useState([]);
   const [show, setShow] = useState(false);
   const [token] = useState(
     JSON.parse(localStorage.getItem("@KenzieHub:token")) || ""
   );
-
+  const [statusTech] = useState([
+    { id: 0, status: "Escolha um Nível" },
+    { id: 1, status: "Iniciante" },
+    { id: 2, status: "Intermediário" },
+    { id: 3, status: "Avançado" },
+  ]);
   const { register, handleSubmit, reset } = useForm();
 
   const loadTechs = () => {
-    const user = JSON.parse(localStorage.getItem("@KenzieHub:user"));
-
     api
-      .get(`/users/${user.id}`, {
+      .get(`/profile/`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -41,23 +45,32 @@ export const Dashboard = ({ authenticated }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const onSubmit = ({ title, status }) => {
-    api
-      .post(
-        "users/techs",
-        {
-          title: title,
-          status: status,
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
+  const handleAdd = ({ title, status }) => {
+    if (title !== "" && status !== statusTech[0].status) {
+      api
+        .post(
+          "users/techs",
+          {
+            title: title,
+            status: status,
           },
-        }
-      )
-      .then((_) => loadTechs());
-
-    reset();
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        )
+        .then((resp) => {
+          loadTechs();
+          toast.success("Tecnologia adicionada");
+        })
+        .catch((err) => toast.error("Tecnologia já cadastrada"));
+      reset();
+    } else {
+      title === ""
+        ? toast.error("Nome não informado!")
+        : toast.error("Escolha um Nível!!");
+    }
   };
 
   const handleDelete = (id) => {
@@ -78,6 +91,11 @@ export const Dashboard = ({ authenticated }) => {
     setShow(true);
   };
 
+  const handleLogout = () => {
+    setAuthenticated(false);
+    localStorage.clear();
+  };
+
   if (!authenticated) {
     return <Redirect to="/login" />;
   }
@@ -94,10 +112,35 @@ export const Dashboard = ({ authenticated }) => {
       />
 
       <section>
+        <Button onClick={handleLogout} type="button">
+          Logout
+        </Button>
+
         <h2>Adicionar Tecnologia</h2>
-        <form onSubmit={handleSubmit(onSubmit)}>
+
+        <form id="addTech" onSubmit={handleSubmit(handleAdd)}>
           <Input register={register} name="title" placeholder="Nome" />
-          <Input register={register} name="status" placeholder="Nível" />
+
+          <div className="container_status">
+            <select
+              defaultValue="Escolha um Nível"
+              className="status_select"
+              {...register("status")}
+              form="addTech"
+            >
+              {statusTech.map((item) =>
+                item.id === 0 ? (
+                  <option disabled key={item.id} value={item.status}>
+                    {item.status}
+                  </option>
+                ) : (
+                  <option key={item.id} value={item.status}>
+                    {item.status}
+                  </option>
+                )
+              )}
+            </select>
+          </div>
           <Button type="submit">ADD</Button>
         </form>
       </section>

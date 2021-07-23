@@ -14,12 +14,28 @@ export const ContainerSignup = styled.main`
     display: flex;
     flex-direction: column;
     align-items: center;
-  }
-  div {
-    margin-bottom: 1rem;
-  }
+    div {
+      margin-bottom: 1rem;
+    }
 
-  button {
+    .container_course {
+      display: flex;
+      flex-direction: column;
+      .course_select {
+        cursor: pointer;
+        width: 280px;
+        height: 50px;
+        border-radius: 10px;
+        padding-left: 0.5rem;
+        color: var(--dark-blue);
+      }
+      .course_error {
+        height: 20px;
+        color: var(--red);
+        margin-top: 5px;
+        margin-left: 10px;
+      }
+    }
   }
 
   p {
@@ -40,7 +56,7 @@ export const ContainerSignup = styled.main`
       }
       div:nth-child(5) {
         grid-column: 1/3;
-        input {
+        .course_select {
           width: 100%;
         }
       }

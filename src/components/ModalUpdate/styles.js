@@ -28,4 +28,29 @@ export const FormUpdate = styled.form`
   background: var(--dark-blue);
   border-radius: 10px;
   box-shadow: 3px 4px 18px 10px rgba(0, 0, 0, 0.76);
+  position: relative;
+
+  button:first-child {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: transparent;
+    color: var(--red);
+    border: none;
+  }
+
+  .container_status {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+    .status_select {
+      cursor: pointer;
+      width: 250px;
+      height: 50px;
+      border-radius: 10px;
+      padding-left: 0.8rem;
+      color: var(--dark-blue);
+      background-color: var(--snow-blue);
+    }
+  }
 `;

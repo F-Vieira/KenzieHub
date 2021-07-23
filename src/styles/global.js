@@ -1,5 +1,5 @@
 import { createGlobalStyle } from "styled-components";
-import KenzieBackground from "../assets/kenzieHubBackground.webp";
+import KenzieBackground from "../assets/kenzieHubBackground.png";
 
 export default createGlobalStyle`
   *{
@@ -16,7 +16,8 @@ export default createGlobalStyle`
     --red: #FF0000;
   }
   body{
-    background: url(${KenzieBackground});
+    background: url(${KenzieBackground}) no-repeat;
+    background-size: cover;
     
   }
   body, input, button{

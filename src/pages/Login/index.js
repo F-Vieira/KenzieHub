@@ -61,6 +61,7 @@ export const Login = ({ authenticated, setAuthenticated }) => {
         <Input
           register={register}
           name="password"
+          type="password"
           error={errors.password?.message}
           placeholder="Senha"
         />

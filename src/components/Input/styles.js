@@ -9,6 +9,7 @@ export const ContainerInput = styled.div`
     height: 50px;
     border-radius: 10px;
     padding-left: 2rem;
+    background-color: var(--snow-blue);
     &::placeholder {
       color: var(--dark-blue);
     }

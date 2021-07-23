@@ -11,8 +11,40 @@ export const ContainerDashboard = styled.main`
   section:nth-child(2) {
     text-align: center;
     margin-bottom: 2rem;
+    position: relative;
+    width: 100%;
+    button:first-child {
+      font-size: 14px;
+      width: 60px;
+      height: 30px;
+      position: absolute;
+      right: 15px;
+      top: 10px;
+    }
     h2 {
-      margin: 1rem 0;
+      margin: 3rem 0 2rem;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      span {
+        display: none;
+      }
+      .container_status {
+        display: flex;
+        flex-direction: column;
+        margin: 1.5rem 0;
+        .status_select {
+          cursor: pointer;
+          width: 280px;
+          height: 50px;
+          border-radius: 10px;
+          padding-left: 0.5rem;
+          color: var(--dark-blue);
+          background-color: var(--snow-blue);
+        }
+      }
     }
   }
   section + section {
@@ -29,8 +61,8 @@ export const ContainerDashboard = styled.main`
     section:nth-child(2) {
       width: 100%;
       form {
+        flex-direction: row;
         width: 100%;
-        display: flex;
         justify-content: space-evenly;
       }
     }
