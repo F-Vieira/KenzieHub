@@ -19,9 +19,18 @@ export const ContainerHome = styled.main`
   }
 
   @media screen and (min-width: 1024px) {
+    h1 {
+      font-size: 3rem;
+    }
+    p {
+      width: 600px;
+      font-size: 1.5rem;
+      margin: 4rem 0;
+    }
     div {
       button + button {
         margin-left: 2rem;
+        margin-top: 0;
       }
     }
   }

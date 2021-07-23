@@ -58,11 +58,11 @@ export const Signup = ({ authenticated }) => {
         reset();
         return history.push("/login");
       })
-      .catch((_) =>
+      .catch((_) => {
         toast.error(
           "Erro ao criar a conta, verifique os dados e tente novamente"
-        )
-      );
+        );
+      });
   };
 
   if (authenticated) {

@@ -16,7 +16,10 @@ export const Home = ({ authenticated }) => {
   return (
     <ContainerHome>
       <h1>KenzieHub</h1>
-      <p>Descrição</p>
+      <p>
+        Uma plataforma para os Devs da Kenzie Academy registrarem suas
+        Tecnologias aprendidas!!
+      </p>
 
       <div>
         <Button onClick={() => handleNavigation("/login")} whiteSchema>
