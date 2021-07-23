@@ -35,7 +35,6 @@ export const Dashboard = ({ authenticated }) => {
       })
       .catch((err) => console.log(err));
   };
-  console.log(techs);
 
   useEffect(() => {
     loadTechs();

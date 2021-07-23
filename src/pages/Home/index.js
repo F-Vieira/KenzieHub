@@ -18,10 +18,12 @@ export const Home = ({ authenticated }) => {
       <h1>KenzieHub</h1>
       <p>Descrição</p>
 
-      <Button onClick={() => handleNavigation("/login")} whiteSchema>
-        Login
-      </Button>
-      <Button onClick={() => handleNavigation("/signup")}>Cadastro</Button>
+      <div>
+        <Button onClick={() => handleNavigation("/login")} whiteSchema>
+          Login
+        </Button>
+        <Button onClick={() => handleNavigation("/signup")}>Cadastro</Button>
+      </div>
     </ContainerHome>
   );
 };

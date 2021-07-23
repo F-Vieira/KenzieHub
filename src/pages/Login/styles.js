@@ -5,6 +5,7 @@ export const ContainerLogin = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   color: var(--snow-blue);
 
   h2 {

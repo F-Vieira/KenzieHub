@@ -28,4 +28,36 @@ export const ContainerSignup = styled.main`
       color: var(--light-blue);
     }
   }
+
+  @media screen and (min-width: 1024px) {
+    form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr 1fr 1fr 1fr 40px;
+      grid-gap: 20px 15px;
+      div {
+        margin-bottom: 0;
+      }
+      div:nth-child(5) {
+        grid-column: 1/3;
+        input {
+          width: 100%;
+        }
+      }
+      div:nth-child(6) {
+        grid-column: 1/3;
+        input {
+          width: 100%;
+        }
+      }
+      button {
+        grid-column: 1/3;
+        justify-self: center;
+      }
+      p {
+        grid-column: 1/3;
+        justify-self: center;
+      }
+    }
+  }
 `;
