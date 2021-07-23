@@ -1,10 +1,10 @@
 import { Switch, Route } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 import { Home } from "../pages/Home";
 import { Signup } from "../pages/Signup";
 import { Login } from "../pages/Login";
 import { Dashboard } from "../pages/Dashboard";
-import { useEffect, useState } from "react";
 
 export const Routes = () => {
   const [authenticated, setAuthenticated] = useState(false);

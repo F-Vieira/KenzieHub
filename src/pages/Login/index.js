@@ -9,6 +9,7 @@ import { Input } from "../../components/Input";
 import { api } from "../../services/api";
 
 import { ContainerLogin } from "./styles";
+
 export const Login = ({ authenticated, setAuthenticated }) => {
   const schema = yup.object().shape({
     email: yup.string().email("E-mail Inválido").required("Campo Obrigatório"),
@@ -41,7 +42,7 @@ export const Login = ({ authenticated, setAuthenticated }) => {
         reset();
         return history.push("/dashboard");
       })
-      .catch((err) => toast.error("E-mail ou senha incorreta!"));
+      .catch((_) => toast.error("E-mail ou senha incorreta!"));
   };
 
   if (authenticated) {

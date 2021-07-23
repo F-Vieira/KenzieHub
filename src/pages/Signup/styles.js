@@ -28,6 +28,7 @@ export const ContainerSignup = styled.main`
         border-radius: 10px;
         padding-left: 0.5rem;
         color: var(--dark-blue);
+        background: var(--snow-blue);
       }
       .course_error {
         height: 20px;

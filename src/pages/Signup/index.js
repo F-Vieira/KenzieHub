@@ -28,7 +28,13 @@ export const Signup = ({ authenticated }) => {
       .string()
       .required("Campo Obrigatório")
       .min(6, "Mínimo de 6 digitos"),
-    course_module: yup.string().required("Campo Obrigatório"),
+
+    course_module: yup.string().required("Test"),
+    courseChoice: yup.string().when("course_module", {
+      is: "Módulo do Curso",
+      then: yup.string().required("Escolha um módulo"),
+    }),
+
     bio: yup.string().required("Campo Obrigatório"),
   });
 
@@ -52,7 +58,7 @@ export const Signup = ({ authenticated }) => {
         reset();
         return history.push("/login");
       })
-      .catch((err) =>
+      .catch((_) =>
         toast.error(
           "Erro ao criar a conta, verifique os dados e tente novamente"
         )
@@ -95,6 +101,7 @@ export const Signup = ({ authenticated }) => {
 
         <div className="container_course">
           <select
+            defaultValue="Módulo do Curso"
             className="course_select"
             {...register("course_module")}
             form="signup"
@@ -111,7 +118,7 @@ export const Signup = ({ authenticated }) => {
               )
             )}
           </select>
-          <span className="course_error">{errors.course_module?.message}</span>
+          <span className="course_error">{errors.courseChoice?.message}</span>
         </div>
         <Input
           register={register}
