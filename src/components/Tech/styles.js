@@ -29,6 +29,9 @@ export const ContainerTech = styled.div`
     button {
       width: 85px;
       font-size: 18px;
+      svg {
+        font-size: 1.75rem;
+      }
     }
   }
 `;

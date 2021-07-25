@@ -1,5 +1,6 @@
 import { ContainerTech } from "./styles";
 import { Button } from "../Button";
+import { MdUpdate, MdRemove } from "react-icons/md";
 
 export const Tech = ({ title, status, onClickDel, onClickUp }) => {
   return (
@@ -9,8 +10,12 @@ export const Tech = ({ title, status, onClickDel, onClickUp }) => {
         <p>{status}</p>
       </div>
       <div>
-        <Button onClick={onClickUp}>UPDATE</Button>
-        <Button onClick={onClickDel}>DELETE</Button>
+        <Button onClick={onClickUp}>
+          <MdUpdate />
+        </Button>
+        <Button onClick={onClickDel}>
+          <MdRemove />
+        </Button>
       </div>
     </ContainerTech>
   );

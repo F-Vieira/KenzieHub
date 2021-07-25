@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { ImCross } from "react-icons/im";
+import { MdUpdate, MdClose } from "react-icons/md";
 import { useState } from "react";
 import { toast } from "react-toastify";
 
@@ -67,7 +67,7 @@ export const ModalUpdate = ({
     <ContainerModal hidden={!show}>
       <FormUpdate onSubmit={handleSubmit(handleUpdate)}>
         <button type="button" onClick={handleClose}>
-          <ImCross />
+          <MdClose />
         </button>
 
         <div className="container_status">
@@ -90,7 +90,9 @@ export const ModalUpdate = ({
             )}
           </select>
         </div>
-        <Button type="submit">UPDATE</Button>
+        <Button type="submit">
+          <MdUpdate />
+        </Button>
       </FormUpdate>
     </ContainerModal>
   );

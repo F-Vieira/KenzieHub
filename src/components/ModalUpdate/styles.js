@@ -37,6 +37,9 @@ export const FormUpdate = styled.form`
     background: transparent;
     color: var(--red);
     border: none;
+    svg {
+      font-size: 1.5rem;
+    }
   }
 
   .container_status {

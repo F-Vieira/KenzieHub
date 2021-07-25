@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import { Redirect } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
+import { MdAdd } from "react-icons/md";
 
 import { Tech } from "../../components/Tech";
 import { Button } from "../../components/Button";
@@ -141,7 +142,9 @@ export const Dashboard = ({ authenticated, setAuthenticated }) => {
               )}
             </select>
           </div>
-          <Button type="submit">ADD</Button>
+          <Button type="submit">
+            <MdAdd />
+          </Button>
         </form>
       </section>
 

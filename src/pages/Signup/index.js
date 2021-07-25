@@ -59,9 +59,7 @@ export const Signup = ({ authenticated }) => {
         return history.push("/login");
       })
       .catch((_) => {
-        toast.error(
-          "Erro ao criar a conta, verifique os dados e tente novamente"
-        );
+        toast.error("E-mail já cadastrado!!");
       });
   };
 

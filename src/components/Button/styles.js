@@ -10,5 +10,7 @@ export const ContainerBtn = styled.button`
   border: 2px solid transparent;
 
   :hover {
+    background: ${(props) => (props.whiteSchema ? "#05033A" : "#05033A")};
+    color: ${(props) => (props.whiteSchema ? "#E3F3FD" : "#E3F3FD")};
   }
 `;

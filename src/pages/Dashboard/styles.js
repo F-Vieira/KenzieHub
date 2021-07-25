@@ -69,7 +69,7 @@ export const ContainerDashboard = styled.main`
     section + section {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
-      grid-template-rows: 50px 1fr 1fr;
+      grid-template-rows: 50px;
       grid-gap: 0 30px;
       h2 {
         grid-column: 1/4;
