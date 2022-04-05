@@ -1,7 +1,7 @@
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-import { Routes } from "./routes";
+import AppRoutes from "./routes";
 
 import GlobalStyle from "./styles/global";
 
@@ -20,7 +20,7 @@ const App = () => {
         draggable
         pauseOnHover
       />
-      <Routes />
+      <AppRoutes />
     </>
   );
 };

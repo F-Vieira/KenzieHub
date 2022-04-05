@@ -1,42 +1,35 @@
-import { Switch, Route } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { Routes, Route, Navigate } from "react-router-dom";
 
 import { Home } from "../pages/Home";
 import { Signup } from "../pages/Signup";
 import { Login } from "../pages/Login";
 import { Dashboard } from "../pages/Dashboard";
 
-export const Routes = () => {
-  const [authenticated, setAuthenticated] = useState(false);
+const PrivateRoute = ({ children, redirectTo }) => {
+  const isAuthenticated = localStorage.getItem("@KenzieHub:token") !== null;
 
-  useEffect(() => {
-    const token = JSON.parse(localStorage.getItem("@KenzieHub:token"));
+  return isAuthenticated ? children : <Navigate to={redirectTo} />;
+};
 
-    if (token) {
-      return setAuthenticated(true);
-    }
-  }, [authenticated]);
-
+const AppRoutes = () => {
   return (
-    <Switch>
-      <Route exact path="/">
-        <Home authenticated={authenticated} />
-      </Route>
-      <Route path="/signup">
-        <Signup authenticated={authenticated} />
-      </Route>
-      <Route path="/login">
-        <Login
-          authenticated={authenticated}
-          setAuthenticated={setAuthenticated}
-        />
-      </Route>
-      <Route path="/dashboard">
-        <Dashboard
-          authenticated={authenticated}
-          setAuthenticated={setAuthenticated}
-        />
-      </Route>
-    </Switch>
+    <Routes>
+      <Route path="/" element={<Home />} />
+
+      <Route path="/signup" element={<Signup />} />
+
+      <Route path="/login" element={<Login />} />
+
+      <Route
+        path="/dashboard"
+        element={
+          <PrivateRoute>
+            <Dashboard />
+          </PrivateRoute>
+        }
+      />
+    </Routes>
   );
 };
+
+export default AppRoutes;
