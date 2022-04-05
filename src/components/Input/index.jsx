@@ -4,9 +4,9 @@ import { useState } from "react";
 
 const ShowPassword = ({ show, name, onClick }) => {
   if (name === "password" && show) {
-    return <IoMdEye onClick={onClick} />;
+    return <IoMdEye onClick={onClick} className="show_password" />;
   } else if (name === "password" && !show) {
-    return <IoMdEyeOff onClick={onClick} />;
+    return <IoMdEyeOff onClick={onClick} className="show_password" />;
   }
 };
 
@@ -27,7 +27,7 @@ const Input = ({ icon: Icon, name, type = "text", placeholder }) => {
   return (
     <I.Container>
       <Icon />
-      <input placeholder={placeholder} type={inputType} />
+      <I.Input placeholder={placeholder} type={inputType} />
       <ShowPassword
         name={name}
         show={showPassword}

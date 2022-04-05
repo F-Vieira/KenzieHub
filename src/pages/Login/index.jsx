@@ -1,7 +1,7 @@
 import Button from "../../components/Button";
 import Form from "../../components/Form";
 import Input from "../../components/Input";
-import { MdEmail, MdLock, IoMdEye, IoMdEyeOff } from "react-icons/md";
+import { MdEmail, MdLock } from "react-icons/md";
 
 const Login = () => {
   return (
