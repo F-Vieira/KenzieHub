@@ -11,7 +11,6 @@ const PrivateRoute = ({ children, redirectTo }) => {
 };
 
 const AppRoutes = () => {
-  console.log(window.Path2D);
   return (
     <Routes>
       <Route path="/" element={<Navigate to="/login" />} />
