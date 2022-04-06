@@ -4,12 +4,13 @@ import Input from "../../components/Input";
 import { MdEmail, MdLock } from "react-icons/md";
 import * as L from "./styles";
 import { Link } from "react-router-dom";
+import Logo from "../../components/Logo";
 
 const Login = () => {
   return (
     <L.Container>
       <Form>
-        <L.Logo>ZHub</L.Logo>
+        <Logo>ZHub</Logo>
         <Input icon={MdEmail} name="email" placeholder="E-mail" />
         <Input
           icon={MdLock}
