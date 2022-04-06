@@ -4,6 +4,7 @@ export const Container = styled.div`
   width: 80%;
   height: 30px;
   border-radius: 5px;
+  border: 2px solid transparent;
 
   padding: 7px;
   margin: 10px 0;
@@ -20,6 +21,12 @@ export const Container = styled.div`
 
   .show_password {
     cursor: pointer;
+  }
+
+  transition: 1s;
+
+  :focus-within {
+    border: 2px solid var(--light_green);
   }
 `;
 

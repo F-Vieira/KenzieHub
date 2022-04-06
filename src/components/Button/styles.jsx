@@ -14,7 +14,12 @@ export const Container = styled.button`
   font-weight: bold;
   letter-spacing: 1px;
 
-  &:hover {
+  transition: 1s;
+  :hover {
+    background-color: var(--dark_green);
+  }
+
+  :focus {
     background-color: var(--dark_green);
   }
 `;
