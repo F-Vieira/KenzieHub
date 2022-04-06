@@ -5,6 +5,7 @@ import { MdEmail, MdLock } from "react-icons/md";
 import * as L from "./styles";
 import { Link } from "react-router-dom";
 import Logo from "../../components/Logo";
+import FormFooter from "../../components/FormFooter";
 
 const Login = () => {
   return (
@@ -19,9 +20,9 @@ const Login = () => {
           type="password"
         />
         <Button>Entrar</Button>
-        <L.Footer>
-          É novo? <Link to="/signup">Crie uma conta.</Link>
-        </L.Footer>
+        <FormFooter redirectTo="/signup" textLink=" Crie uma conta.">
+          É novo?
+        </FormFooter>
       </Form>
     </L.Container>
   );
