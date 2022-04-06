@@ -3,8 +3,18 @@ import styled from "styled-components";
 export const Container = styled.button`
   width: 100px;
   height: 30px;
-  background-color: var(--green);
-  color: var(--white);
-
   border-radius: 5px;
+
+  margin: 10px 0;
+
+  background-color: var(--light_green_transparent);
+  color: var(--white);
+  border: 2px solid var(--light_green);
+
+  font-weight: bold;
+  letter-spacing: 1px;
+
+  &:hover {
+    background-color: var(--dark_green);
+  }
 `;

@@ -26,7 +26,7 @@ const Input = ({ icon: Icon, name, type = "text", placeholder }) => {
 
   return (
     <I.Container>
-      <Icon />
+      <Icon className="icon" />
       <I.Input placeholder={placeholder} type={inputType} />
       <ShowPassword
         name={name}

@@ -4,22 +4,22 @@ export const Container = styled.div`
   width: 80%;
   height: 30px;
   border-radius: 5px;
+
   padding: 7px;
+  margin: 10px 0;
 
   background-color: var(--dark_green);
   color: var(--light_green);
 
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
 
-  position: relative;
+  .icon {
+    margin-left: 5px;
+  }
 
   .show_password {
-    position: absolute;
-    top: 50%;
-    right: 10px;
-    transform: translate(0, -50%);
+    cursor: pointer;
   }
 `;
 
@@ -27,6 +27,8 @@ export const Input = styled.input`
   width: 60%;
   background-color: var(--dark_green);
   color: var(--light_green);
+
+  margin: 0 15px;
 
   ::placeholder {
     color: var(--light_green_transparent);

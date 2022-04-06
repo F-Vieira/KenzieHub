@@ -12,6 +12,7 @@ export default createGlobalStyle`
   :root{
     --green: #0C1D0A;
     --dark_green: #020C01;
+    --dark_green_transparent: #020C0155;
     --light_green: #8EDE86;
     --light_green_transparent: #8EDE8655;
     --black: #202020;
