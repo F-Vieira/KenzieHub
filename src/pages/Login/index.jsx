@@ -3,6 +3,7 @@ import Form from "../../components/Form";
 import Input from "../../components/Input";
 import { MdEmail, MdLock } from "react-icons/md";
 import * as L from "./styles";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   return (
@@ -17,6 +18,9 @@ const Login = () => {
           type="password"
         />
         <Button>Entrar</Button>
+        <L.Footer>
+          É novo? <Link to="/signup">Crie uma conta.</Link>
+        </L.Footer>
       </Form>
     </L.Container>
   );
