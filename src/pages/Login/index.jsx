@@ -3,7 +3,6 @@ import Form from "../../components/Form";
 import Input from "../../components/Input";
 import { MdEmail, MdLock } from "react-icons/md";
 import * as L from "./styles";
-import { Link } from "react-router-dom";
 import Logo from "../../components/Logo";
 import FormFooter from "../../components/FormFooter";
 

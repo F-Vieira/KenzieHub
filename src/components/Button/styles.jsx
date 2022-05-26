@@ -7,9 +7,10 @@ export const Container = styled.button`
 
   margin: 10px 0;
 
-  background-color: var(--light_green_transparent);
+  background-color: ${({ whiteMode }) => (whiteMode ? "#0C1D0A" : "#020C0155")};
   color: var(--white);
   border: 2px solid var(--light_green);
+  border-color: ${({ whiteMode }) => (whiteMode ? "#0C1D0A" : "#8EDE86")};
 
   font-weight: bold;
   letter-spacing: 1px;
