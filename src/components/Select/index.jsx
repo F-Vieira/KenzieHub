@@ -1,15 +1,27 @@
 import * as S from "./styles";
 
-const Select = ({ ...rest }) => {
+const Select = ({ register, name, options, form, ...rest }) => {
   return (
-    <S.Container defaultValue="Escolha um módulo">
-      <option value="Escolha um módulo" disabled>
-        Escolha um módulo
-      </option>
-      <option value="Módulo 1">Módulo 1</option>
-      <option value="Módulo 2">Módulo 2</option>
-      <option value="Módulo 3">Módulo 3</option>
-    </S.Container>
+    <>
+      <S.Container
+        {...rest}
+        form={form}
+        {...register(name)}
+        defaultValue="Escolha um módulo"
+      >
+        {options.map((item) =>
+          item.id === 0 ? (
+            <option key={item.id} value={item.name} disabled>
+              {item.name}
+            </option>
+          ) : (
+            <option key={item.id} value={item.name}>
+              {item.name}
+            </option>
+          )
+        )}
+      </S.Container>
+    </>
   );
 };
 

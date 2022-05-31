@@ -1,6 +1,7 @@
-import * as I from "./styles";
-import { IoMdEye, IoMdEyeOff } from "react-icons/io";
 import { useState } from "react";
+import { IoMdEye, IoMdEyeOff } from "react-icons/io";
+
+import * as I from "./styles";
 
 const ShowPassword = ({ show, name, onClick }) => {
   if (name === "password" && show) {
@@ -10,14 +11,7 @@ const ShowPassword = ({ show, name, onClick }) => {
   }
 };
 
-const Input = ({
-  icon: Icon,
-  name,
-  type = "text",
-  placeholder,
-  register,
-  error,
-}) => {
+const Input = ({ icon: Icon, name, type = "text", placeholder, register }) => {
   const [showPassword, setShowPassword] = useState(false);
   const [inputType, setInputType] = useState(type);
 
@@ -40,7 +34,6 @@ const Input = ({
         show={showPassword}
         onClick={handleShowPassword}
       />
-      {/* <span>{error}</span> */}
     </I.Container>
   );
 };
