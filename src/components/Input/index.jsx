@@ -10,7 +10,14 @@ const ShowPassword = ({ show, name, onClick }) => {
   }
 };
 
-const Input = ({ icon: Icon, name, type = "text", placeholder }) => {
+const Input = ({
+  icon: Icon,
+  name,
+  type = "text",
+  placeholder,
+  register,
+  error,
+}) => {
   const [showPassword, setShowPassword] = useState(false);
   const [inputType, setInputType] = useState(type);
 
@@ -27,12 +34,13 @@ const Input = ({ icon: Icon, name, type = "text", placeholder }) => {
   return (
     <I.Container>
       <Icon className="icon" />
-      <I.Input placeholder={placeholder} type={inputType} />
+      <I.Input {...register(name)} placeholder={placeholder} type={inputType} />
       <ShowPassword
         name={name}
         show={showPassword}
         onClick={handleShowPassword}
       />
+      {/* <span>{error}</span> */}
     </I.Container>
   );
 };
