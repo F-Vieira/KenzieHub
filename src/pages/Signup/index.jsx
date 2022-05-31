@@ -13,6 +13,8 @@ import {
 import { useState } from "react";
 import FormFooter from "../../components/FormFooter";
 import Logo from "../../components/Logo";
+import Textarea from "../../components/Textarea";
+import Select from "../../components/Select";
 
 const Signup = () => {
   const [part, setPart] = useState(1);
@@ -34,19 +36,9 @@ const Signup = () => {
         )}
         {part === 2 && (
           <>
-            {/* <Input icon={MdBiotech} name="bio" placeholder="Bio" /> */}
-            <textarea className="bio" placeholder="Bio" />
-            <select>
-              <option>Módulo do Curso</option>
-              <option>Módulo 1</option>
-              <option>Módulo 2</option>
-              <option>Módulo 3</option>
-            </select>
-            <Input
-              icon={MdGolfCourse}
-              name="course"
-              placeholder="Módulo do Curso"
-            />
+            <Textarea placeholder="Bio" />
+            <Select />
+
             <div className="boxButton">
               <Button whiteMode onClick={() => setPart(1)}>
                 Anterior
